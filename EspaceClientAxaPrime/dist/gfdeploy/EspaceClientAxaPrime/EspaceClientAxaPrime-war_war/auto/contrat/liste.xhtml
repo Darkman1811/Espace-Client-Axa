@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+    </head>
+    <body>
+        
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="head">
+    <style type="text/css">
+        .cars-datalist .text-column p:last-child{
+            color:#757575;
+        }
+        
+        .cars-datalist .car-item i, .cars-datalist .car-item .car-details {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .cars-datalist .car-item button {
+            float: right;
+        }
+        
+        .cars-datalist ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .ui-car-display td:last-child {
+            font-weight: 700;
+        }
+    
+    @media (max-width:640px) {
+        .cars-datalist .text-column {
+            text-align: center;
+        }
+    }
+    </style>
+</ui:define>
+            <ui:define name="content">
+                            
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <h1>GESTION DES CONTRATS</h1>
+                        <p:dataList value="#{contratMB.mescontrats}" var="contrat" 
+                            type="unordered" itemType="none" paginator="true" rows="7" styleClass="cars-datalist">
+                            <f:facet name="header">
+                                Liste des contrats
+                            </f:facet>
+                            <div style="border-bottom: 1px solid #bdbdbd" class="clearfix car-item">
+                                <i class="ui-icon ui-icon-directions-car" style="font-size:48px;color:#757575;margin:24px;"></i>
+                                <div class="car-details">
+                                    <p>#{contrat.id}</p>
+                                    <p style="color:#757575">#{contrat.nomService} - #{contrat.produit.nom}</p>
+                                </div>
+                                <p:commandButton  update="contratDetail" oncomplete="PF('carDialog').show()"  title="View Detail" icon="ui-icon-search" style="margin:24px 24px 0 0">
+                                    <f:setPropertyActionListener value="#{contrat}" target="#{contratMB.selectedContrat}" />
+                                </p:commandButton>
+                            </div>
+                        </p:dataList>
+
+                        <p:dialog header="Details contrat" widgetVar="carDialog" responsive="true" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+                            <p:outputPanel id="contratDetail" style="text-align:center;">
+                                <p:panelGrid  columns="2" rendered="#{not empty contratMB.selectedContrat}" columnClasses="label,value">
+                                  <p:panel  header="Contrat" rendered="#{not empty devisMB.selectedDevis}" >
+                                  
+                                   <p:panelGrid  columns="2" rendered="#{not empty devisMB.selectedDevis}" columnClasses="label,value">
+                                 
+                                    <f:facet name="header">
+                                        <p:graphicImage name="demo/images/car/#{contratMB.selectedContrat.id}-big.gif"/> 
+                                    </f:facet>
+
+                                    <h:outputText value="Intitulé du contrat" />
+                                    <h:outputText value="#{contratMB.selectedContrat.nomService}" />
+                    
+                                    <h:outputText value="Montant" />
+                                    <h:outputText value="#{contratMB.selectedContrat.montant} Fcfa" />
+                                   </p:panelGrid>
+                                  </p:panel>
+                                    
+                                     <p:panel collapsed="true" header="Produit" id="pannelProduit" toggleable="true"  rendered="#{not empty devisMB.selectedDevis}" >
+                               
+                                    <p:panelGrid  columns="2" rendered="#{not empty contratMB.selectedContrat}" columnClasses="label,value">
+                                      <h:outputText value="Nom produit" />
+                                      <h:outputText rendered="#{not empty contratMB.selectedContrat.produit}" value="#{contratMB.selectedContrat.produit.nom}" />
+                                      <h:outputText value="Description" />
+                                      <h:outputText rendered="#{not empty contratMB.selectedContrat.produit}" value="#{contratMB.selectedContrat.produit.description}" />
+                                      <h:outputText value="Cout" />
+                                      <h:outputText rendered="#{not empty contratMB.selectedContrat.produit}" value="#{contratMB.selectedContrat.produit.cout} Fcfa" />
+                                   
+                                    </p:panelGrid>                                      
+                                   </p:panel>
+                                </p:panelGrid>
+                                  <p:panel collapsed="true" header="Voitures" id="panelVoitures" toggleable="true"  rendered="#{not empty contratMB.selectedContrat}" >
+                                           <p:dataTable var="voiture" value="#{contratMB.selectedContrat.voitures}" rendered="#{not empty contratMB.selectedContrat.voitures}" >
+                                   <p:column headerText="Id">
+                                       <h:outputText value="#{voiture.id}" />
+                                   </p:column>
+ 
+                                    <p:column headerText="Marque">
+                                       <h:outputText value="#{voiture.marque}" />
+                                   </p:column>
+ 
+                                   <p:column headerText="Modéle">
+                                       <h:outputText value="#{voiture.modele}" />
+                                   </p:column>
+ 
+                                   <p:column headerText="Chassis">
+                                       <h:outputText value="#{voiture.chassis}" />
+                                   </p:column>
+                                    
+                                    <p:column headerText="Matricule">
+                                       <h:outputText value="#{voiture.matricule}" />
+                                   </p:column>
+                                    
+                                    <p:column headerText="Puissance">
+                                       <h:outputText value="#{voiture.puissance}" />
+                                   </p:column>
+                               </p:dataTable>
+                           
+                                      </p:panel>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </div>
+                </div>
+  
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Espace client Axa Sénégal - Devis automobile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+             
+                <h:form id="form">
+   
+                
+                      <div class="ui-g-12">
+                    <!-- Left Side -->
+                    <div class="card card-w-title">
+                        <h1>GESTION DES DEVIS</h1>
+                        <p:dataGrid var="devis" value="#{devisMB.mesdevis}" columns="3" layout="grid"
+                                    rows="9" paginator="true" id="devis"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="6,9,12,24">
+
+                            <f:facet name="header">
+                                <b> MES DEVIS   </b>
+                            </f:facet>
+
+                            <p:panel header="#{devis.nomService}" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <h:outputText value="#{devis.dateDevis}" styleClass="Fs14 FontDosisMedium"/>
+                                     <p:progressBar value="#{devis.status}" labelTemplate="{value}%" displayOnly="true"/>
+                                    <h:outputText value="#{devis.step}" />
+
+                                    <p:commandButton icon="ui-icon-search" styleClass="AquaButton" update=":form:selectedCarDetail" oncomplete="PF('carDialog').show()">
+                                        <f:setPropertyActionListener value="#{devis}" target="#{devisMB.selectedDevis}" />
+                                    </p:commandButton>
+                                </h:panelGrid>
+                            </p:panel>
+
+                        </p:dataGrid>
+
+                        <p:dialog header="Détails devis" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" responsive="true">
+                            <p:outputPanel id="selectedCarDetail" style="text-align:center;">
+                                <p:panelGrid  columns="2" columnClasses="label,value">
+                                   
+                                <p:panel  header="Devis" rendered="#{not empty devisMB.selectedDevis}" >
+                                  
+                                   <p:panelGrid  columns="2" rendered="#{not empty devisMB.selectedDevis}" columnClasses="label,value">
+                                   
+                                    <f:facet name="header">
+                                        <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+                                    </f:facet>
+                                       
+                                    <h:outputText value="Id:" />
+                                    <h:outputText value="#{devisMB.selectedDevis.id}" />
+
+                                    <h:outputText value="Intitulé" />
+                                    <h:outputText value="#{devisMB.selectedDevis.nomService}" />
+
+                                    <h:outputText value="Date" />
+                                    <h:outputText value="#{devisMB.selectedDevis.dateDevis}" />
+                                    
+                                    <h:outputText value="Etape" />
+                                    <h:outputText value="#{devisMB.selectedDevis.step}" />
+                                    
+                                    <h:outputText value="Parcours" />
+                                    <h:outputText value="#{devisMB.selectedDevis.status}%" />
+
+                                    <h:outputText value="Prix" />
+                                    <h:outputText value="#{devisMB.selectedDevis.montant} Fcfa" />
+                                  </p:panelGrid>
+                               </p:panel>  
+                                  <p:panel collapsed="true" header="Produit" id="pannelProduit" toggleable="true"  rendered="#{not empty devisMB.selectedDevis}" >
+                               
+                                    <p:panelGrid  columns="2" rendered="#{not empty devisMB.selectedDevis}" columnClasses="label,value">
+                                      <h:outputText value="Nom produit" />
+                                      <h:outputText rendered="#{not empty devisMB.selectedDevis.produit}" value="#{devisMB.selectedDevis.produit.nom}" />
+                                      <h:outputText value="Description" />
+                                      <h:outputText rendered="#{not empty devisMB.selectedDevis.produit}" value="#{devisMB.selectedDevis.produit.description}" />
+                                      <h:outputText value="Cout" />
+                                      <h:outputText rendered="#{not empty devisMB.selectedDevis.produit}" value="#{devisMB.selectedDevis.produit.cout} Fcfa" />
+                                   
+                                    </p:panelGrid>                                      
+                                   </p:panel>
+                             </p:panelGrid>   
+                                <p:panel collapsed="true" header="Voitures" id="panelVoitures" toggleable="true"  rendered="#{not empty devisMB.selectedDevis}" >
+                                           <p:dataTable var="voiture" value="#{devisMB.selectedDevis.voitures}" rendered="#{not empty devisMB.selectedDevis.voitures}" >
+                                   <p:column headerText="Id">
+                                       <h:outputText value="#{voiture.id}" />
+                                   </p:column>
+ 
+                                    <p:column headerText="Marque">
+                                       <h:outputText value="#{voiture.marque}" />
+                                   </p:column>
+ 
+                                   <p:column headerText="Modéle">
+                                       <h:outputText value="#{voiture.modele}" />
+                                   </p:column>
+ 
+                                   <p:column headerText="Chassis">
+                                       <h:outputText value="#{voiture.chassis}" />
+                                   </p:column>
+                                    
+                                    <p:column headerText="Matricule">
+                                       <h:outputText value="#{voiture.matricule}" />
+                                   </p:column>
+                                    
+                                    <p:column headerText="Puissance">
+                                       <h:outputText value="#{voiture.puissance}" />
+                                   </p:column>
+                               </p:dataTable>
+                           
+                                      </p:panel>
+                               
+                                
+                                
+                            </p:outputPanel>
+                        </p:dialog>
+                    </div>
+                </div>
+       </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
