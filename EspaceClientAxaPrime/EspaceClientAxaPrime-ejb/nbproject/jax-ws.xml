@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="produitMetier">
+      <implementation-class>metier.produitMetier</implementation-class>
+    </service>
+    <service name="test">
+      <implementation-class>spi.processmaker.test</implementation-class>
+    </service>
+    <service name="voitureMetier">
+      <implementation-class>metier.voitureMetier</implementation-class>
+    </service>
+    <service name="clientMetier">
+      <implementation-class>metier.clientMetier</implementation-class>
+    </service>
+    <service name="devisMetier">
+      <implementation-class>metier.devisMetier</implementation-class>
+    </service>
+  </services>
+  <clients/>
+  <jsr109>true</jsr109>
+</jax-ws>

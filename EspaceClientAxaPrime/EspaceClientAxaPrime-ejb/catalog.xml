@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://172.17.0.3/sysworkflow/en/neoclassic/services/wsdl2" uri="src/conf/xml-resources/web-services/NewWebServiceFromWSDL/wsdl/172.17.0.3/sysworkflow/en/neoclassic/services/wsdl2.wsdl"/>
+</catalog>
