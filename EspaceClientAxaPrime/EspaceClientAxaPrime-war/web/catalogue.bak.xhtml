@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </head>
+    <body>
+        <ui:composition template="./WEB-INF/template.xhtml">
+            <ui:define name="content">
+                  
+                <h:form id="form">
+   
+                
+                      <div class="ui-g-12">
+                    <!-- Left Side -->
+                    <div class="card card-w-title">
+                        <h1>GESTION DES DEVIS</h1>
+                     
+                        <p:dataGrid var="produits" value="#{produitMB.mesProduits}" columns="3" layout="grid"
+                                    rows="9" paginator="true" id="produits"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="6,9,12,24">
+
+                            <f:facet name="header">
+                                <b> MES DEVIS   </b>
+                            </f:facet>
+
+                            <p:panel header="#{produits.nom}" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <h:outputText value="#{produits.nom}" styleClass="Fs14 FontDosisMedium"/>
+                                     <h:outputText value="#{produits.description}" />
+
+                                    <p:commandButton icon="ui-icon-search" styleClass="AquaButton" update=":form:selectedCarDetail" oncomplete="PF('carDialog').show()">
+                                        <f:setPropertyActionListener value="#{produits}" target="#{produitMB.selectedProduit}" />
+                                    </p:commandButton>
+                                </h:panelGrid>
+                            </p:panel>
+
+                        </p:dataGrid>
+
+                        <p:dialog header="Détails produits" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" responsive="true">
+                          
+                            <p:outputPanel id="selectedCarDetail" style="text-align:center;">
+                                
+                                <p:commandButton type="button" rendered="#{produitMB.selectedDevis.status==100}"  value="Valider Devis" action="#{produitMB.validerDevis()}" styleClass="green-btn" style="margin-bottom:10px;"/>
+                             
+                              <p:panelGrid  columns="2" columnClasses="label,value">
+                                   
+                                <p:panel  header="Devis" rendered="#{not empty produitMB.selectedDevis}" >
+                                  
+                                   <p:panelGrid  columns="2" rendered="#{not empty produitMB.selectedDevis}" columnClasses="label,value">
+                                   
+                                    <f:facet name="header">
+                                        <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+                                    </f:facet>
+                                       
+                                    <h:outputText value="Id:" />
+                                    <h:outputText value="#{produitMB.selectedDevis.id}" />
+
+                                    <h:outputText value="Intitulé" />
+                                    <h:outputText value="#{produitMB.selectedDevis.nomService}" />
+
+                                    <h:outputText value="Date" />
+                                    <h:outputText value="#{produitMB.selectedDevis.dateDevis}" />
+                                    
+                                    <h:outputText value="Etape" />
+                                    <h:outputText value="#{produitMB.selectedDevis.step}" />
+                                    
+                                    <h:outputText value="Parcours" />
+                                    <h:outputText value="#{produitMB.selectedDevis.status}%" />
+
+                                    <h:outputText value="Prix" />
+                                    <h:outputText value="#{produitMB.selectedDevis.montant} Fcfa" />
+                                  </p:panelGrid>
+                               </p:panel>  
+                                  <p:panel collapsed="true" header="Produit" id="pannelProduit" toggleable="true"  rendered="#{not empty produitMB.selectedDevis}" >
+                               
+                                    <p:panelGrid  columns="2" rendered="#{not empty produitMB.selectedDevis}" columnClasses="label,value">
+                                      <h:outputText value="Nom produit" />
+                                      <h:outputText rendered="#{not empty produitMB.selectedDevis.produit}" value="#{produitMB.selectedDevis.produit.nom}" />
+                                      <h:outputText value="Description" />
+                                      <h:outputText rendered="#{not empty produitMB.selectedDevis.produit}" value="#{produitMB.selectedDevis.produit.description}" />
+                                      <h:outputText value="Cout" />
+                                      <h:outputText rendered="#{not empty produitMB.selectedDevis.produit}" value="#{produitMB.selectedDevis.produit.cout} Fcfa" />
+                                   
+                                    </p:panelGrid>                                      
+                                   </p:panel>
+                             </p:panelGrid>   
+                                <p:panel collapsed="true" header="Voitures" id="panelVoitures" toggleable="true"  rendered="#{not empty produitMB.selectedDevis}" >
+                                           <p:dataTable var="voiture" value="#{produitMB.selectedDevis.voitures}" rendered="#{not empty produitMB.selectedDevis.voitures}" >
+                                   <p:column headerText="Id">
+                                       <h:outputText value="#{voiture.id}" />
+                                   </p:column>
+ 
+                                    <p:column headerText="Marque">
+                                       <h:outputText value="#{voiture.marque}" />
+                                   </p:column>
+ 
+                                   <p:column headerText="Modéle">
+                                       <h:outputText value="#{voiture.modele}" />
+                                   </p:column>
+ 
+                                   <p:column headerText="Chassis">
+                                       <h:outputText value="#{voiture.chassis}" />
+                                   </p:column>
+                                    
+                                    <p:column headerText="Matricule">
+                                       <h:outputText value="#{voiture.matricule}" />
+                                   </p:column>
+                                    
+                                    <p:column headerText="Puissance">
+                                       <h:outputText value="#{voiture.puissance}" />
+                                   </p:column>
+                               </p:dataTable>
+                           
+                                      </p:panel>
+                               
+                                
+                                
+                            </p:outputPanel>
+                        </p:dialog>
+                    </div>
+                </div>
+       </h:form>  
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

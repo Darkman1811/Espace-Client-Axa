@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Espace client Axa Sénégal - Devis automobile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+             
+                <h:form id="form">
+   
+                
+                      <div class="ui-g-12">
+                    <!-- Left Side -->
+                    <div class="card card-w-title">
+                        <h1>CATALOGUE DES PRODUITS AXA</h1>
+                       
+                    
+    <p:repeat value="#{produitMB.mesProduits}" var="produit">
+        <h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
+            <p:commandLink  oncomplete="PF('produitDialog').show()" update=":form:selectedProductDetail">
+                <f:setPropertyActionListener value="#{produit}" target="#{produitMB.selectedProduit}" />
+                <p:graphicImage height="150" width="200" name="images/produit/#{produit.imageurl}-BIG.jpg" />
+             </p:commandLink>
+             
+            <p:outputPanel >
+                <h:panelGrid  columns="2" cellpadding="5">
+                    <h:outputText value="Categorie Offre" />
+                    <h:outputText value="#{produit.categorie}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="nom offre" />
+                    <h:outputText value="#{produit.nom}" style="font-weight: bold"/>
+                   
+                </h:panelGrid>
+            </p:outputPanel>
+              
+             <h:panelGrid  columns="1" cellpadding="5">
+               <h:outputText value="Description:" />
+               <h:outputText value="#{produit.description}" style="font-weight: bold"/>
+             </h:panelGrid>
+             
+                  <p:commandButton icon="ui-icon-search"   value="Devis" styleClass="green-btn" oncomplete="PF('produitDialog').show() " update=":form:selectedProductDetail" >
+                      <f:setPropertyActionListener value="#{produit}" target="#{produitMB.selectedProduit}" />
+                 </p:commandButton>
+                                          
+        </h:panelGrid>
+        <hr />
+    </p:repeat>
+ 
+    <p:dialog header="Devis #{produitMB.selectedProduit.categorie}" widgetVar="produitDialog" modal="true"  resizable="false">
+        <p:outputPanel id="selectedProductDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty produitMB.selectedProduit}" columnClasses="label,value">
+                <f:facet name="header">
+                   <p:graphicImage height="150" name="images/produit/#{produit.imageurl}-BIG.jpg" />
+                </f:facet>
+ 
+                <h:outputText value="Nom:" />
+                <h:outputText value="#{produitMB.selectedProduit.nom}" />
+ 
+                <h:outputText value="Categorie:" />
+                <h:outputText value="#{produitMB.selectedProduit.categorie}" />
+ 
+                <h:outputText value="Description:" />
+                <h:outputText value="#{produitMB.selectedProduit.description}" />
+ 
+                <h:outputText value="Prix" />
+                <h:outputText value="#{produitMB.selectedProduit.cout} Fcfa" />
+            </p:panelGrid>
+        </p:outputPanel>
+         
+        <p:panel style="text-align: center">
+            <p:commandButton   value="Demander un devis" action="#{produitMB.demanderDevis()}" styleClass="green-btn" style="margin-bottom:10px; margin-top: 10px; text-align: center;"/>
+        </p:panel>                     
+    </p:dialog>
+   
+
+                    </div>
+                </div>
+       </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
