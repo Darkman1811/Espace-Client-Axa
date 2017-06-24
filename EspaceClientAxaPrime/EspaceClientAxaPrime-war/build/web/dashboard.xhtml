@@ -1,0 +1,334 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Dashboard</ui:define>
+
+    <ui:define name="head">
+           <script type="text/javascript">
+               //<![CDATA[
+               function skinChart() {
+                   this.cfg.shadow = false;
+                   this.cfg.title = '';
+                   this.cfg.seriesColors = ['#FFC107', '#03A9F4'];
+                   this.cfg.grid = {
+                       background: '#ffffff',
+                       borderColor: '#ffffff',
+                       gridLineColor: '#EEEEEE',
+                       shadow: false
+                   };
+                   this.cfg.axesDefaults = {
+                       rendererOptions: {
+                           textColor: '#212121'
+                       }
+                   };
+                   this.cfg.seriesDefaults = {
+                       shadow: false,
+                       lineWidth: 1,
+                       markerOptions: {
+                           shadow: false,
+                           size: 7,
+                           style: 'circle'
+                       }
+                   }
+               }
+               //]]>  
+           </script>
+           <style type="text/css">
+               .main-content {
+                   padding: 0;
+               }
+           </style>
+       </ui:define>
+
+    <ui:define name="content">
+        <div class="ui-g dashboard">
+            <div class="ui-g-12 ui-md-4">
+                <div class="card overview">
+                    <div class="overview-content clearfix">
+                        <span class="overview-title">Montant Factures</span>
+                        <span class="overview-badge">+15%</span>
+                        <span class="overview-detail">850.000 Fcfa/ Mois</span>
+                    </div>
+                    <div class="overview-footer">
+                        <p:graphicImage name="images/dashboard/sales.svg" library="ultima-layout" style="width: 100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-4">
+                <div class="card overview">
+                    <div class="overview-content clearfix">
+                        <span class="overview-title">Taux de couverture</span>
+                        <span class="overview-badge">+60%</span>
+                        <span class="overview-detail">37% </span> De vos biens
+                    </div>
+                    <div class="overview-footer">
+                        <p:graphicImage name="images/dashboard/views.svg" library="ultima-layout" style="width: 100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-4">
+                <div class="card overview">
+                    <div class="overview-content clearfix">
+                        <span class="overview-title">Echéances</span>
+                        <span class="overview-badge">3 le mois prochain</span>
+                        <span class="overview-detail"> 7 factures</span> Ce mois
+                    </div>
+                    <div class="overview-footer">
+                        <p:graphicImage name="images/dashboard/progress.svg" library="ultima-layout" style="width: 100%" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                <div class="ui-g card colorbox colorbox-1">
+                    <div class="ui-g-4">
+                        <i class="material-icons">&#xE86C;</i>
+                    </div>
+                    <div class="ui-g-8">
+                        <span class="colorbox-name">Devis</span>
+                        <span class="colorbox-count">3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                <div class="ui-g card colorbox colorbox-2">
+                    <div class="ui-g-4">
+                        <i class="material-icons">&#xE8C9;</i>
+                    </div>
+                    <div class="ui-g-8">
+                        <span class="colorbox-name">Sinistres</span>
+                        <span class="colorbox-count">12</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                <div class="ui-g card colorbox colorbox-3">
+                    <div class="ui-g-4">
+                        <i class="material-icons">&#xE160;</i>
+                    </div>
+                    <div class="ui-g-8">
+                        <span class="colorbox-name">Contrats</span>
+                        <span class="colorbox-count">22</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                <div class="ui-g card colorbox colorbox-4">
+                    <div class="ui-g-4">
+                        <i class="material-icons">&#xE0BE;</i>
+                    </div>
+                    <div class="ui-g-8">
+                        <span class="colorbox-name">Messages</span>
+                        <span class="colorbox-count">10</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ui-g-12 ui-md-6 ui-lg-4 task-list">
+                <p:panel header="Taches">
+                    <ul>
+                        <li>
+                            <p:selectBooleanCheckbox />
+                            <span class="task-name">Validation Devis <b>n° D631</b></span>
+                            <i class="material-icons">&#xE8C9;</i>
+                        </li>
+                        <li>
+                            <p:selectBooleanCheckbox />
+                            <span class="task-name">Paiemant facture <b>n° F24336</b></span>
+                            <i class="material-icons">&#xE8A1;</i>
+                        </li>
+                        <li>
+                            <p:selectBooleanCheckbox />
+                            <span class="task-name">Consulter contrat <b>n° C124</b></span>
+                            <i class="material-icons">&#xE561;</i>
+                        </li>
+                        <li>
+                            <p:selectBooleanCheckbox />
+                            <span class="task-name">Consulter contrat <b>n° C114</b></span>
+                            <i class="material-icons">&#xE7FB;</i>
+                        </li>
+                        <li>
+                            <p:selectBooleanCheckbox />
+                            <span class="task-name">Validation Devis <b>n° D31</b></span>
+                            <i class="material-icons">&#xE3AE;</i>
+                        </li>
+                        <li>
+                            <p:selectBooleanCheckbox />
+                            <span class="task-name">Paiemant facture <b>n° F20145</b></span>
+                            <i class="material-icons">&#xE01B;</i>
+                        </li>
+                    </ul>
+                </p:panel>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid contact-form">
+                <p:panel header="Nous contacter">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" autoWidth="false">
+                                <f:selectItem itemLabel="Information" itemValue="info" />
+                                <f:selectItem itemLabel="Requete" itemValue="req" />
+                                <f:selectItem itemLabel="Reclamation" itemValue="rec" />
+                                <f:selectItem itemLabel="Aide" itemValue="help" />
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="ui-g-12">
+                            <h:panelGroup styleClass="md-inputfield">
+                                <p:inputText />
+                                <label>Code client</label>
+                            </h:panelGroup>
+                        </div>
+                        <div class="ui-g-12">
+                            <h:panelGroup styleClass="md-inputfield">
+                                <p:inputText />
+                                <label>Objet</label>
+                            </h:panelGroup>
+                        </div>
+                        <div class="ui-g-12">
+                            <h:panelGroup styleClass="md-inputfield">
+                                <p:inputText />
+                                <label>Message</label>
+                            </h:panelGroup>
+                        </div>
+                    </div>
+                    <p:commandButton type="button" value="Envoyer" icon="ui-icon-send"></p:commandButton>
+                </p:panel>
+            </div>
+            <div class="ui-g-12 ui-lg-4 contacts">
+                <p:panel header="Contacts">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <p:graphicImage name="images/avatar1.png" library="ultima-layout" width="45"/>
+                                <span class="name">Centre d'appel</span>
+                                <span class="email">+221 33 821 14 16</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p:graphicImage name="images/avatar2.png" library="ultima-layout" width="45"/>
+                                <span class="name">Departement Sinistre</span>
+                                <span class="email">+221 33 821 14 17</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p:graphicImage name="images/avatar3.png" library="ultima-layout" width="45"/>
+                                <span class="name">Service commercial</span>
+                                <span class="email">+221 33 821 14 18</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p:graphicImage name="images/avatar4.png" library="ultima-layout" width="45"/>
+                                <span class="name">Mr Massaer Niang</span>
+                                <span class="email">+221 77 32 56 87</span>
+                            </a>
+                        </li>
+                    </ul>
+                </p:panel>
+            </div>
+            
+            <div class="ui-g-12 ui-md-4">
+                <div class="card timeline ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-3">
+                            <span class="event-time">1 jours</span>
+                            <i class="material-icons" style="color:#009688">&#xE1BC;</i>
+                        </div>
+                        <div class="ui-g-9">
+                            <span class="event-owner" style="color:#009688">Sinistre</span>
+                            <span class="event-text">Accident automobile</span>
+                            <div class="event-content">
+                                <p:graphicImage name="images/dashboard/accident-3.jpg" library="ultima-layout"/>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-g-3">
+                            <span class="event-time">6j</span>
+                            <i class="material-icons" style="color:#E91E63">&#xE885;</i>
+                        </div>
+                        <div class="ui-g-9">
+                            <span class="event-owner" style="color:#E91E63">Nouveau Contrat </span>
+                            <span class="event-text">Assurance Santé 90 %. Pour Mr Abdoulaye Diaw. Nouveau responsable Informatique.</span>
+                        </div>
+                        
+                        
+                        <div class="ui-g-3">
+                            <span class="event-time">2w ago</span>
+                            <i class="material-icons" style="color:#FFC107">&#xE8A8;</i>
+                        </div>
+                        <div class="ui-g-9">
+                            <span class="event-owner" style="color:#FFC107">Appel</span>
+                            <span class="event-text">Vous avez reçu un appel de notre centre d'appel.</span>
+                        </div>
+                        
+                        <div class="ui-g-3">
+                            <span class="event-time">15j</span>
+                            <i class="material-icons" style="color:#9c27b0">&#xE0C9;</i>
+                        </div>
+                        <div class="ui-g-9">
+                            <span class="event-owner" style="color:#9c27b0">Message</span>
+                            <span class="event-text">Relance devis assurance de votre maison à Saly. Nous vous proposons ...</span>
+                        </div>
+                        
+                        <div class="ui-g-3">
+                            <span class="event-time">48j</span>
+                            <i class="material-icons" style="color:#ff9800">&#xE0C8;</i>
+                        </div>
+                        <div class="ui-g-9">
+                            <span class="event-owner" style="color:#ff9800">Rencontre</span>
+                            <span class="event-text">Vous avez visité notre agence en centre ville</span>
+                            
+                        </div>
+                        
+                        <div class="ui-g-3">
+                            <span class="event-time">52j</span>
+                            <i class="material-icons" style="color:#607d8b">&#xE8A8;</i>
+                        </div>
+                        <div class="ui-g-9">
+                            <span class="event-owner">Appel</span>
+                            <span class="event-text">Vous avez appelé à notre centre d'appel.</span>
+                        </div>
+                        
+                 
+                        <div class="ui-g-12">
+                            <p:commandButton type="button" value="Refresh" icon="ui-icon-refresh" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ui-g-12 ui-md-8">
+                <h:form>
+                    <div class="card">
+                        <p:dataTable var="car" value="#{dtBasicView.cars}" selectionMode="single" rowKey="#{car.id}" reflow="true" style="margin-bottom:20px">
+                            <f:facet name="header">Vos biens non assurés</f:facet>
+                            <p:column headerText="Type de bien" sortBy="#{car.id}">
+                                <h:outputText value="#{car.id}" />
+                            </p:column>
+
+                          
+                            <p:column headerText="Description" sortBy="#{car.brand}">
+                                <h:outputText value="#{car.brand}" />
+                            </p:column>
+                            
+                            <p:column headerText="Action" sortBy="#{car.color}">
+                                <p:commandButton value="Demander un devis" />
+                            </p:column>
+                        </p:dataTable>   
+                        
+                        <p:panel header="Sales Graph">
+                            <p:chart type="line" model="#{chartDemoView.lineModel1}" responsive="true"/>
+                        </p:panel>
+                    </div>
+                </h:form>
+            </div>
+           
+        </div>
+    </ui:define>
+
+</ui:composition>

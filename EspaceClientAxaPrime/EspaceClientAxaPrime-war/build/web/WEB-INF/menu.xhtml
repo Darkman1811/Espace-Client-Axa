@@ -1,0 +1,87 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pu="http://primefaces.org/ultima">
+    
+    <h:form id="menuform"> 
+        <div class="layout-menu #{guestPreferences.menuClass}">
+            <div class="nano">
+                <div class="nano-content menu-scroll-content">
+                    <ui:fragment rendered="#{guestPreferences.profileMode == 'inline' and guestPreferences.menuLayout != 'menu-layout-static menu-layout-horizontal'}">
+                        <div class="profile">
+                            <div class="profile-image"></div>
+                            <a id="profile-options" href="#">
+                                <span class="profile-name">Jane Williams</span>
+                                <i class="material-icons">&#xE313;</i>
+                            </a>
+                        </div>
+                    
+                        <ul id="profile-menu" class="ultima-menu">
+                            <li role="menuitem">
+                                <a href="#" class="ripplelink">
+                                    <i class="material-icons">&#xE7FD;</i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#" class="ripplelink">
+                                    <i class="material-icons">&#xE32A;</i>
+                                    <span>Privacy</span>
+                                </a>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#" class="ripplelink">
+                                    <i class="material-icons">&#xE8B9;</i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                            <li role="menuitem">
+                                <a href="#" class="ripplelink">
+                                    <i class="material-icons">&#xE8AC;</i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ui:fragment>
+                    
+                    <pu:menu widgetVar="me">
+                        <p:menuitem id="um_acceuil" value="Acceuil" icon="&#xE871;" outcome="/dashboard"/>
+                        <p:menuitem id="um_catalogue" value="Catalogue" icon="&#xE871;" outcome="/catalogue"/>
+                        <p:submenu id="um_auto" label="Automobile" icon="&#xE40A;">
+                            <p:menuitem id="devisAuto" value="Devis" icon="&#xE3AE;" outcome="/auto/devis/liste.xhtml" ajax="false" />
+                            <p:menuitem id="contratAuto" value="Contrats" icon="&#xE3AE;" outcome="/auto/contrat/liste.xhtml" ajax="false" />
+                            <p:menuitem id="factureAuto" value="Factures" icon="&#xE3AE;" outcome="/auto/facture/liste.xhtml" ajax="false" />
+                            <p:menuitem id="SinistreAuto" value="Sinistres" icon="&#xE3AE;" outcome="/auto/sinistre/liste.xhtml" ajax="false" />
+                        </p:submenu>
+                                     
+                        <p:submenu id="um_habitation" label="Habitation" icon="&#xE8B8;">
+                            <p:menuitem id="devisHabit" value="Devis" icon="&#xE3AE;" outcome="/habitation/devis/liste.xhtml" ajax="false" />
+                            <p:menuitem id="contratHabit" value="Contrats" icon="&#xE3AE;" outcome="/habitation/contrat/liste.xhtml" ajax="false" />
+                            <p:menuitem id="factureHabit" value="Factures" icon="&#xE3AE;" outcome="/habitation/facture/liste.xhtml" ajax="false" />
+                            <p:menuitem id="sinistreHabit" value="Sinistres" icon="&#xE3AE;" outcome="/habitation/sinistre/liste.xhtml" ajax="false" />
+                        </p:submenu>
+                        <p:submenu id="um_pro" label="Professionel" icon="&#xE8B8;">
+                            <p:menuitem id="devisPro" value="Devis" icon="&#xE3AE;" outcome="/pro/devis/liste.xhtml" ajax="false" />
+                            <p:menuitem id="contratPro" value="Contrats" icon="&#xE3AE;" outcome="/pro/contrat/liste.xhtml" ajax="false" />
+                            <p:menuitem id="facturePro" value="Factures" icon="&#xE3AE;" outcome="/pro/facture/liste.xhtml" ajax="false" />
+                            <p:menuitem id="sinistrePro" value="Sinistres" icon="&#xE3AE;" outcome="/pro/sinistre/liste.xhtml" ajax="false" />
+                        </p:submenu>
+                     
+                         <p:submenu id="um_sante" label="Santé" icon="&#xE8B8;">
+                            <p:menuitem id="santeDevis" value="Devis" icon="&#xE3AE;" outcome="/sante/devis/liste.xhtml" ajax="false" />
+                            <p:menuitem id="santeContrat" value="Contrats" icon="&#xE3AE;" outcome="/sante/contrat/liste.xhtml" ajax="false" />
+                            <p:menuitem id="santeFacture" value="Factures" icon="&#xE3AE;" outcome="/sante/facture/liste.xhtml" ajax="false" />
+                            <p:menuitem id="santeSinistre" value="Sinistres" icon="&#xE3AE;" outcome="/sante/sinistre/liste.xhtml" ajax="false" />
+                        </p:submenu>
+           
+                        <p:menuitem id="um_utils" value="Utils" icon="&#xE869;" outcome="/utils"/>
+                        <p:menuitem id="um_doc" value="Documentation" icon="&#xE880;" outcome="/docs"/>
+                    </pu:menu>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</ui:composition>
