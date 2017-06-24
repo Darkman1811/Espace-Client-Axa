@@ -1,0 +1,2080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="cd974efc-4a5d-4211-a992-2accf17126b9" activeEnvironment="Default" name="processmaker" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="608ac4fe-80a4-4d0c-b0d5-5c305a686a26" wsaVersion="NONE" name="ProcessMakerServiceSoap" type="wsdl" bindingName="{http://www.processmaker.com}ProcessMakerServiceSoap" soapVersion="1_2" anonymous="optional" definition="http://172.17.0.3/sysworkflow/en/neoclassic/services/wsdl2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://172.17.0.3/sysworkflow/en/neoclassic/services/wsdl2"><con:part><con:url>http://172.17.0.3/sysworkflow/en/neoclassic/services/wsdl2</con:url><con:content><![CDATA[<definitions targetNamespace="http://www.processmaker.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xs0="http://www.processmaker.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.processmaker.com">
+      <xs:element name="login">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userid" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="loginResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="version" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pmResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="processListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="processListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="processListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="processes" maxOccurs="unbounded" type="xs0:processListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="roleListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="roleListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="roleListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="roles" maxOccurs="unbounded" type="xs0:roleListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="groupListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="groupListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="groupListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="groups" maxOccurs="unbounded" type="xs0:groupListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="departmentListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="parentUID" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="departmentListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="departmentListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="departments" maxOccurs="unbounded" type="xs0:departmentListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="userListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="userListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="userListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="users" maxOccurs="unbounded" type="xs0:userListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="caseListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="status" type="xs:string"/>
+          <xs:element name="delIndex" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="unassignedCaseListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="delIndex" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="caseListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="unassignedCaseListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="caseListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="cases" maxOccurs="unbounded" type="xs0:caseListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="unassignedCaseListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="cases" maxOccurs="unbounded" type="xs0:unassignedCaseListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="userId" type="xs:string"/>
+            <xs:element name="firstname" type="xs:string"/>
+            <xs:element name="lastname" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="role" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="dueDate" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+            <xs:element name="status" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="userUID" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="userUid" type="xs:string"/>
+            <xs:element name="userName" type="xs:string"/>
+            <xs:element name="firstName" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+            <xs:element name="lastName" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+            <xs:element name="email" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+            <xs:element name="dueDate" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+            <xs:element name="status" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+            <xs:element name="role" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+            <xs:element name="password" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="informationUserStruct">
+        <xs:sequence>
+          <xs:element name="username" type="xs:string"/>
+          <xs:element name="firstname" type="xs:string"/>
+          <xs:element name="lastname" type="xs:string"/>
+          <xs:element name="mail" type="xs:string"/>
+          <xs:element name="address" type="xs:string"/>
+          <xs:element name="zipcode" type="xs:string"/>
+          <xs:element name="country" type="xs:string"/>
+          <xs:element name="state" type="xs:string"/>
+          <xs:element name="location" type="xs:string"/>
+          <xs:element name="phone" type="xs:string"/>
+          <xs:element name="fax" type="xs:string"/>
+          <xs:element name="cellular" type="xs:string"/>
+          <xs:element name="birthday" type="xs:string"/>
+          <xs:element name="position" type="xs:string"/>
+          <xs:element name="replacedby" type="xs:string"/>
+          <xs:element name="duedate" type="xs:string"/>
+          <xs:element name="calendar" type="xs:string"/>
+          <xs:element name="status" type="xs:string"/>
+          <xs:element name="department" type="xs:string"/>
+          <xs:element name="reportsto" type="xs:string"/>
+          <xs:element name="userexperience" type="xs:string"/>
+          <xs:element name="photo" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="informationUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="userUid" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="informationUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+            <xs:element name="info" minOccurs="0" maxOccurs="unbounded" type="xs0:informationUserStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createGroupRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createGroupResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="groupUID" type="xs:string" minOccurs="0"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createDepartmentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="parentUID" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createDepartmentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="departmentUID" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="assignUserToGroupRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="userId" type="xs:string"/>
+            <xs:element name="groupId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeUserFromGroupRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="userId" type="xs:string"/>
+            <xs:element name="groupId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="assignUserToDepartmentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="userId" type="xs:string"/>
+            <xs:element name="departmentId" type="xs:string"/>
+            <xs:element name="manager" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="variableStruct">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="sendVariablesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+            <xs:element name="variables" maxOccurs="unbounded" type="xs0:variableListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="variableListStruct">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="variableListNameStruct">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="variableListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="variables" maxOccurs="unbounded" type="xs0:variableListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVariablesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+            <xs:element name="variables" minOccurs="0" maxOccurs="unbounded" type="xs0:variableListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVariablesNamesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+            <xs:element name="variables" minOccurs="0" maxOccurs="unbounded" type="xs0:variableListNameStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVariablesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+            <xs:element name="variables" maxOccurs="unbounded" type="xs0:variableStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVariablesNamesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="newCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="processId" type="xs:string"/>
+            <xs:element name="taskId" type="xs:string"/>
+            <xs:element name="variables" maxOccurs="unbounded" type="xs0:variableListStruct"/>
+            <xs:element name="executeTriggers" minOccurs="0" maxOccurs="unbounded" type="xs:integer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="newCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="caseId" minOccurs="0" type="xs:string"/>
+            <xs:element name="caseNumber" minOccurs="0" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="reassignCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+            <xs:element name="delIndex" type="xs:string"/>
+            <xs:element name="userIdSource" type="xs:string"/>
+            <xs:element name="userIdTarget" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="newCaseImpersonateRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="processId" type="xs:string"/>
+            <xs:element name="userId" type="xs:string"/>
+            <xs:element name="variables" maxOccurs="unbounded" type="xs0:variableListStruct"/>
+            <xs:element name="taskId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="newCaseImpersonateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+            <xs:element name="caseId" minOccurs="0" type="xs:string"/>
+            <xs:element name="caseNumber" minOccurs="0" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="routeListStruct">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string"/>
+          <xs:element name="userName" type="xs:string"/>
+          <xs:element name="taskId" type="xs:string"/>
+          <xs:element name="taskName" type="xs:string"/>
+          <xs:element name="delIndex" type="xs:integer"/>
+          <xs:element name="delThread" type="xs:integer"/>
+          <xs:element name="delThreadStatus" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="routeCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+            <xs:element name="delIndex" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="routeCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+            <xs:element name="routing" minOccurs="0" maxOccurs="unbounded" type="xs0:routeListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="executeTriggerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+            <xs:element name="triggerIndex" type="xs:string"/>
+            <xs:element name="delIndex" minOccurs="0" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sendMessageRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+            <xs:element name="from" type="xs:string"/>
+            <xs:element name="to" type="xs:string"/>
+            <xs:element name="cc" type="xs:string"/>
+            <xs:element name="bcc" type="xs:string"/>
+            <xs:element name="subject" type="xs:string"/>
+            <xs:element name="template" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCaseInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+            <xs:element name="delIndex" minOccurs="0" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="getCaseInfoStruct">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string"/>
+          <xs:element name="userName" type="xs:string"/>
+          <xs:element name="taskId" type="xs:string"/>
+          <xs:element name="taskName" type="xs:string"/>
+          <xs:element name="delIndex" type="xs:integer"/>
+          <xs:element name="delThread" type="xs:integer"/>
+          <xs:element name="delThreadStatus" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCaseInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="caseId" minOccurs="0" type="xs:string"/>
+            <xs:element name="caseNumber" minOccurs="0" type="xs:string"/>
+            <xs:element name="caseName" minOccurs="0" type="xs:string"/>
+            <xs:element name="caseStatus" minOccurs="0" type="xs:string"/>
+            <xs:element name="caseParalell" minOccurs="0" type="xs:string"/>
+            <xs:element name="caseCreatorUser" minOccurs="0" type="xs:string"/>
+            <xs:element name="caseCreatorUserName" minOccurs="0" type="xs:string"/>
+            <xs:element name="processId" minOccurs="0" type="xs:string"/>
+            <xs:element name="processName" minOccurs="0" type="xs:string"/>
+            <xs:element name="createDate" minOccurs="0" type="xs:string"/>
+            <xs:element name="updateDate" minOccurs="0" type="xs:string"/>
+            <xs:element name="currentUsers" minOccurs="0" maxOccurs="unbounded" type="xs0:getCaseInfoStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="taskListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="taskListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="initialTask" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="taskListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="tasks" maxOccurs="unbounded" type="xs0:taskListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="taskCaseStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="delegate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="taskCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="taskCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="taskCases" maxOccurs="unbounded" type="xs0:taskCaseStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="systemInformationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="systemInformationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+            <xs:element name="version" type="xs:string"/>
+            <xs:element name="operatingSystem" type="xs:string"/>
+            <xs:element name="webServer" type="xs:string"/>
+            <xs:element name="serverName" type="xs:string"/>
+            <xs:element name="serverIp" type="xs:string"/>
+            <xs:element name="phpVersion" type="xs:string"/>
+            <xs:element name="databaseVersion" type="xs:string"/>
+            <xs:element name="databaseServerIp" type="xs:string"/>
+            <xs:element name="databaseName" type="xs:string"/>
+            <xs:element name="availableDatabases" type="xs:string"/>
+            <xs:element name="userBrowser" type="xs:string"/>
+            <xs:element name="userIp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="triggerListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="triggerListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="triggerListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="triggers" maxOccurs="unbounded" type="xs0:triggerListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="outputDocumentListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" minOccurs="0" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="outputDocumentListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="filename" minOccurs="0" type="xs:string"/>
+          <xs:element name="docId" minOccurs="0" type="xs:string"/>
+          <xs:element name="version" minOccurs="0" type="xs:integer"/>
+          <xs:element name="createDate" minOccurs="0" type="xs:string"/>
+          <xs:element name="createBy" minOccurs="0" type="xs:string"/>
+          <xs:element name="type" minOccurs="0" type="xs:string"/>
+          <xs:element name="index" minOccurs="0" type="xs:integer"/>
+          <xs:element name="link" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="outputDocumentListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="documents" maxOccurs="unbounded" type="xs0:outputDocumentListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="inputDocumentListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseId" minOccurs="0" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="inputDocumentProcessListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="processId" minOccurs="0" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="inputDocumentListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="filename" minOccurs="0" type="xs:string"/>
+          <xs:element name="docId" minOccurs="0" type="xs:string"/>
+          <xs:element name="version" minOccurs="0" type="xs:integer"/>
+          <xs:element name="createDate" minOccurs="0" type="xs:string"/>
+          <xs:element name="createBy" minOccurs="0" type="xs:string"/>
+          <xs:element name="type" minOccurs="0" type="xs:string"/>
+          <xs:element name="index" minOccurs="0" type="xs:integer"/>
+          <xs:element name="link" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inputDocumentProcessListStruct">
+        <xs:sequence>
+          <xs:element name="guid" type="xs:string"/>
+          <xs:element name="name" minOccurs="0" type="xs:string"/>
+          <xs:element name="description" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="inputDocumentListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="documents" maxOccurs="unbounded" type="xs0:inputDocumentListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="inputDocumentProcessListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="documents" maxOccurs="unbounded" type="xs0:inputDocumentProcessListStruct"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeDocumentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="appDocUid" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeDocumentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="getCaseNotesStruct">
+        <xs:sequence>
+          <xs:element name="full_name" type="xs:string"/>
+          <xs:element name="app_uid" type="xs:string"/>
+          <xs:element name="usr_uid" type="xs:string"/>
+          <xs:element name="note_date" type="xs:string"/>
+          <xs:element name="note_content" type="xs:string"/>
+          <xs:element name="note_type" type="xs:string"/>
+          <xs:element name="note_availability" type="xs:string"/>
+          <xs:element name="note_origin_obj" type="xs:string"/>
+          <xs:element name="note_affected_obj1" type="xs:string"/>
+          <xs:element name="note_affected_obj2" type="xs:string"/>
+          <xs:element name="note_recipients" type="xs:string"/>
+          <xs:element name="usr_username" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCaseNotesRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="applicationID" type="xs:string"/>
+            <xs:element name="userUid" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCaseNotesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="notes" maxOccurs="unbounded" type="xs0:getCaseNotesStruct"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseUid" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseUid" type="xs:string"/>
+            <xs:element name="delIndex" type="xs:string"/>
+            <xs:element name="userUid" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pauseCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseUid" type="xs:string"/>
+            <xs:element name="delIndex" type="xs:string"/>
+            <xs:element name="userUid" type="xs:string"/>
+            <xs:element name="unpauseDate" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pauseCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="unpauseCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseUid" type="xs:string"/>
+            <xs:element name="delIndex" type="xs:string"/>
+            <xs:element name="userUid" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="unpauseCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addCaseNoteRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="caseUid" type="xs:string"/>
+            <xs:element name="processUid" type="xs:string"/>
+            <xs:element name="taskUid" type="xs:string"/>
+            <xs:element name="userUid" type="xs:string"/>
+            <xs:element name="note" type="xs:string"/>
+            <xs:element name="sendMail" minOccurs="0" maxOccurs="unbounded" type="xs:integer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addCaseNoteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="claimCaseRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionId" type="xs:string"/>
+            <xs:element name="guid" type="xs:string"/>
+            <xs:element name="delIndex" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="claimCaseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status_code" type="xs:integer"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="loginRequest">
+    <part name="parameters" element="xs0:login"/>
+  </message>
+  <message name="loginResponse">
+    <part name="parameters" element="xs0:loginResponse"/>
+  </message>
+  <message name="pmResponse">
+    <part name="parameters" element="xs0:pmResponse"/>
+  </message>
+  <message name="processListRequest">
+    <part name="parameters" element="xs0:processListRequest"/>
+  </message>
+  <message name="processListResponse">
+    <part name="parameters" element="xs0:processListResponse"/>
+  </message>
+  <message name="roleListRequest">
+    <part name="parameters" element="xs0:roleListRequest"/>
+  </message>
+  <message name="roleListResponse">
+    <part name="parameters" element="xs0:roleListResponse"/>
+  </message>
+  <message name="groupListRequest">
+    <part name="parameters" element="xs0:groupListRequest"/>
+  </message>
+  <message name="groupListResponse">
+    <part name="parameters" element="xs0:groupListResponse"/>
+  </message>
+  <message name="departmentListRequest">
+    <part name="parameters" element="xs0:departmentListRequest"/>
+  </message>
+  <message name="departmentListResponse">
+    <part name="parameters" element="xs0:departmentListResponse"/>
+  </message>
+  <message name="variableListRequest">
+    <part name="parameters" element="xs0:variableListRequest"/>
+  </message>
+  <message name="userListRequest">
+    <part name="parameters" element="xs0:userListRequest"/>
+  </message>
+  <message name="userListResponse">
+    <part name="parameters" element="xs0:userListResponse"/>
+  </message>
+  <message name="caseListRequest">
+    <part name="parameters" element="xs0:caseListRequest"/>
+  </message>
+  <message name="caseListResponse">
+    <part name="parameters" element="xs0:caseListResponse"/>
+  </message>
+  <message name="unassignedCaseListRequest">
+    <part name="parameters" element="xs0:unassignedCaseListRequest"/>
+  </message>
+  <message name="unassignedCaseListResponse">
+    <part name="parameters" element="xs0:unassignedCaseListResponse"/>
+  </message>
+  <message name="createUserRequest">
+    <part name="parameters" element="xs0:createUserRequest"/>
+  </message>
+  <message name="createUserResponse">
+    <part name="parameters" element="xs0:createUserResponse"/>
+  </message>
+  <message name="updateUserRequest">
+    <part name="parameters" element="xs0:updateUserRequest"/>
+  </message>
+  <message name="updateUserResponse">
+    <part name="parameters" element="xs0:updateUserResponse"/>
+  </message>
+  <message name="informationUserRequest">
+    <part name="parameters" element="xs0:informationUserRequest"/>
+  </message>
+  <message name="informationUserResponse">
+    <part name="parameters" element="xs0:informationUserResponse"/>
+  </message>
+  <message name="createGroupRequest">
+    <part name="parameters" element="xs0:createGroupRequest"/>
+  </message>
+  <message name="createGroupResponse">
+    <part name="parameters" element="xs0:createGroupResponse"/>
+  </message>
+  <message name="createDepartmentRequest">
+    <part name="parameters" element="xs0:createDepartmentRequest"/>
+  </message>
+  <message name="createDepartmentResponse">
+    <part name="parameters" element="xs0:createDepartmentResponse"/>
+  </message>
+  <message name="assignUserToGroupRequest">
+    <part name="parameters" element="xs0:assignUserToGroupRequest"/>
+  </message>
+  <message name="assignUserToDepartmentRequest">
+    <part name="parameters" element="xs0:assignUserToDepartmentRequest"/>
+  </message>
+  <message name="newCaseRequest">
+    <part name="parameters" element="xs0:newCaseRequest"/>
+  </message>
+  <message name="newCaseResponse">
+    <part name="parameters" element="xs0:newCaseResponse"/>
+  </message>
+  <message name="reassignCaseRequest">
+    <part name="parameters" element="xs0:reassignCaseRequest"/>
+  </message>
+  <message name="newCaseImpersonateRequest">
+    <part name="parameters" element="xs0:newCaseImpersonateRequest"/>
+  </message>
+  <message name="newCaseImpersonateResponse">
+    <part name="parameters" element="xs0:newCaseImpersonateResponse"/>
+  </message>
+  <message name="routeCaseRequest">
+    <part name="parameters" element="xs0:routeCaseRequest"/>
+  </message>
+  <message name="routeCaseResponse">
+    <part name="parameters" element="xs0:routeCaseResponse"/>
+  </message>
+  <message name="executeTriggerRequest">
+    <part name="parameters" element="xs0:executeTriggerRequest"/>
+  </message>
+  <message name="sendVariablesRequest">
+    <part name="parameters" element="xs0:sendVariablesRequest"/>
+  </message>
+  <message name="getVariablesRequest">
+    <part name="parameters" element="xs0:getVariablesRequest"/>
+  </message>
+  <message name="getVariablesResponse">
+    <part name="parameters" element="xs0:getVariablesResponse"/>
+  </message>
+  <message name="getVariablesNamesRequest">
+    <part name="parameters" element="xs0:getVariablesNamesRequest"/>
+  </message>
+  <message name="getVariablesNamesResponse">
+    <part name="parameters" element="xs0:getVariablesNamesResponse"/>
+  </message>
+  <message name="sendMessageRequest">
+    <part name="parameters" element="xs0:sendMessageRequest"/>
+  </message>
+  <message name="getCaseInfoRequest">
+    <part name="parameters" element="xs0:getCaseInfoRequest"/>
+  </message>
+  <message name="getCaseInfoResponse">
+    <part name="parameters" element="xs0:getCaseInfoResponse"/>
+  </message>
+  <message name="taskListRequest">
+    <part name="parameters" element="xs0:taskListRequest"/>
+  </message>
+  <message name="taskListResponse">
+    <part name="parameters" element="xs0:taskListResponse"/>
+  </message>
+  <message name="taskCaseRequest">
+    <part name="parameters" element="xs0:taskCaseRequest"/>
+  </message>
+  <message name="taskCaseResponse">
+    <part name="parameters" element="xs0:taskCaseResponse"/>
+  </message>
+  <message name="systemInformationRequest">
+    <part name="parameters" element="xs0:systemInformationRequest"/>
+  </message>
+  <message name="systemInformationResponse">
+    <part name="parameters" element="xs0:systemInformationResponse"/>
+  </message>
+  <message name="triggerListRequest">
+    <part name="parameters" element="xs0:triggerListRequest"/>
+  </message>
+  <message name="triggerListResponse">
+    <part name="parameters" element="xs0:triggerListResponse"/>
+  </message>
+  <message name="outputDocumentListRequest">
+    <part name="parameters" element="xs0:outputDocumentListRequest"/>
+  </message>
+  <message name="outputDocumentListResponse">
+    <part name="parameters" element="xs0:outputDocumentListResponse"/>
+  </message>
+  <message name="inputDocumentListRequest">
+    <part name="parameters" element="xs0:inputDocumentListRequest"/>
+  </message>
+  <message name="inputDocumentListResponse">
+    <part name="parameters" element="xs0:inputDocumentListResponse"/>
+  </message>
+  <message name="inputDocumentProcessListRequest">
+    <part name="parameters" element="xs0:inputDocumentProcessListRequest"/>
+  </message>
+  <message name="inputDocumentProcessListResponse">
+    <part name="parameters" element="xs0:inputDocumentProcessListResponse"/>
+  </message>
+  <message name="removeDocumentRequest">
+    <part name="parameters" element="xs0:removeDocumentRequest"/>
+  </message>
+  <message name="removeDocumentResponse">
+    <part name="parameters" element="xs0:removeDocumentResponse"/>
+  </message>
+  <message name="getCaseNotesRequest">
+    <part name="parameters" element="xs0:getCaseNotesRequest"/>
+  </message>
+  <message name="getCaseNotesResponse">
+    <part name="parameters" element="xs0:getCaseNotesResponse"/>
+  </message>
+  <message name="removeUserFromGroupRequest">
+    <part name="parameters" element="xs0:removeUserFromGroupRequest"/>
+  </message>
+  <message name="deleteCaseRequest">
+    <part name="parameters" element="xs0:deleteCaseRequest"/>
+  </message>
+  <message name="deleteCaseResponse">
+    <part name="parameters" element="xs0:deleteCaseResponse"/>
+  </message>
+  <message name="cancelCaseRequest">
+    <part name="parameters" element="xs0:cancelCaseRequest"/>
+  </message>
+  <message name="cancelCaseResponse">
+    <part name="parameters" element="xs0:cancelCaseResponse"/>
+  </message>
+  <message name="pauseCaseRequest">
+    <part name="parameters" element="xs0:pauseCaseRequest"/>
+  </message>
+  <message name="pauseCaseResponse">
+    <part name="parameters" element="xs0:pauseCaseResponse"/>
+  </message>
+  <message name="unpauseCaseRequest">
+    <part name="parameters" element="xs0:unpauseCaseRequest"/>
+  </message>
+  <message name="unpauseCaseResponse">
+    <part name="parameters" element="xs0:unpauseCaseResponse"/>
+  </message>
+  <message name="addCaseNoteRequest">
+    <part name="parameters" element="xs0:addCaseNoteRequest"/>
+  </message>
+  <message name="addCaseNoteResponse">
+    <part name="parameters" element="xs0:addCaseNoteResponse"/>
+  </message>
+  <message name="claimCaseRequest">
+    <part name="parameters" element="xs0:claimCaseRequest"/>
+  </message>
+  <message name="claimCaseResponse">
+    <part name="parameters" element="xs0:claimCaseResponse"/>
+  </message>
+  <portType name="ProcessMakerServiceSoap">
+    <operation name="login">
+      <input message="xs0:loginRequest"/>
+      <output message="xs0:loginResponse"/>
+    </operation>
+    <operation name="processList">
+      <input message="xs0:processListRequest"/>
+      <output message="xs0:processListResponse"/>
+    </operation>
+    <operation name="roleList">
+      <input message="xs0:roleListRequest"/>
+      <output message="xs0:roleListResponse"/>
+    </operation>
+    <operation name="groupList">
+      <input message="xs0:groupListRequest"/>
+      <output message="xs0:groupListResponse"/>
+    </operation>
+    <operation name="departmentList">
+      <input message="xs0:departmentListRequest"/>
+      <output message="xs0:departmentListResponse"/>
+    </operation>
+    <operation name="userList">
+      <input message="xs0:userListRequest"/>
+      <output message="xs0:userListResponse"/>
+    </operation>
+    <operation name="caseList">
+      <input message="xs0:caseListRequest"/>
+      <output message="xs0:caseListResponse"/>
+    </operation>
+    <operation name="unassignedCaseList">
+      <input message="xs0:unassignedCaseListRequest"/>
+      <output message="xs0:unassignedCaseListResponse"/>
+    </operation>
+    <operation name="createUser">
+      <input message="xs0:createUserRequest"/>
+      <output message="xs0:createUserResponse"/>
+    </operation>
+    <operation name="updateUser">
+      <input message="xs0:updateUserRequest"/>
+      <output message="xs0:updateUserResponse"/>
+    </operation>
+    <operation name="informationUser">
+      <input message="xs0:informationUserRequest"/>
+      <output message="xs0:informationUserResponse"/>
+    </operation>
+    <operation name="createGroup">
+      <input message="xs0:createGroupRequest"/>
+      <output message="xs0:createGroupResponse"/>
+    </operation>
+    <operation name="createDepartment">
+      <input message="xs0:createDepartmentRequest"/>
+      <output message="xs0:createDepartmentResponse"/>
+    </operation>
+    <operation name="assignUserToGroup">
+      <input message="xs0:assignUserToGroupRequest"/>
+      <output message="xs0:pmResponse"/>
+    </operation>
+    <operation name="assignUserToDepartment">
+      <input message="xs0:assignUserToDepartmentRequest"/>
+      <output message="xs0:pmResponse"/>
+    </operation>
+    <operation name="newCase">
+      <input message="xs0:newCaseRequest"/>
+      <output message="xs0:newCaseResponse"/>
+    </operation>
+    <operation name="reassignCase">
+      <input message="xs0:reassignCaseRequest"/>
+      <output message="xs0:pmResponse"/>
+    </operation>
+    <operation name="newCaseImpersonate">
+      <input message="xs0:newCaseImpersonateRequest"/>
+      <output message="xs0:newCaseImpersonateResponse"/>
+    </operation>
+    <operation name="routeCase">
+      <input message="xs0:routeCaseRequest"/>
+      <output message="xs0:routeCaseResponse"/>
+    </operation>
+    <operation name="executeTrigger">
+      <input message="xs0:executeTriggerRequest"/>
+      <output message="xs0:pmResponse"/>
+    </operation>
+    <operation name="sendVariables">
+      <input message="xs0:sendVariablesRequest"/>
+      <output message="xs0:pmResponse"/>
+    </operation>
+    <operation name="getVariables">
+      <input message="xs0:getVariablesRequest"/>
+      <output message="xs0:getVariablesResponse"/>
+    </operation>
+    <operation name="getVariablesNames">
+      <input message="xs0:getVariablesNamesRequest"/>
+      <output message="xs0:getVariablesNamesResponse"/>
+    </operation>
+    <operation name="sendMessage">
+      <input message="xs0:sendMessageRequest"/>
+      <output message="xs0:pmResponse"/>
+    </operation>
+    <operation name="getCaseInfo">
+      <input message="xs0:getCaseInfoRequest"/>
+      <output message="xs0:getCaseInfoResponse"/>
+    </operation>
+    <operation name="taskList">
+      <input message="xs0:taskListRequest"/>
+      <output message="xs0:taskListResponse"/>
+    </operation>
+    <operation name="taskCase">
+      <input message="xs0:taskCaseRequest"/>
+      <output message="xs0:taskCaseResponse"/>
+    </operation>
+    <operation name="systemInformation">
+      <input message="xs0:systemInformationRequest"/>
+      <output message="xs0:systemInformationResponse"/>
+    </operation>
+    <operation name="triggerList">
+      <input message="xs0:triggerListRequest"/>
+      <output message="xs0:triggerListResponse"/>
+    </operation>
+    <operation name="outputDocumentList">
+      <input message="xs0:outputDocumentListRequest"/>
+      <output message="xs0:outputDocumentListResponse"/>
+    </operation>
+    <operation name="inputDocumentList">
+      <input message="xs0:inputDocumentListRequest"/>
+      <output message="xs0:inputDocumentListResponse"/>
+    </operation>
+    <operation name="inputDocumentProcessList">
+      <input message="xs0:inputDocumentProcessListRequest"/>
+      <output message="xs0:inputDocumentProcessListResponse"/>
+    </operation>
+    <operation name="removeDocument">
+      <input message="xs0:removeDocumentRequest"/>
+      <output message="xs0:removeDocumentResponse"/>
+    </operation>
+    <operation name="getCaseNotes">
+      <input message="xs0:getCaseNotesRequest"/>
+      <output message="xs0:getCaseNotesResponse"/>
+    </operation>
+    <operation name="removeUserFromGroup">
+      <input message="xs0:removeUserFromGroupRequest"/>
+      <output message="xs0:pmResponse"/>
+    </operation>
+    <operation name="deleteCase">
+      <input message="xs0:deleteCaseRequest"/>
+      <output message="xs0:deleteCaseResponse"/>
+    </operation>
+    <operation name="cancelCase">
+      <input message="xs0:cancelCaseRequest"/>
+      <output message="xs0:cancelCaseResponse"/>
+    </operation>
+    <operation name="pauseCase">
+      <input message="xs0:pauseCaseRequest"/>
+      <output message="xs0:pauseCaseResponse"/>
+    </operation>
+    <operation name="unpauseCase">
+      <input message="xs0:unpauseCaseRequest"/>
+      <output message="xs0:unpauseCaseResponse"/>
+    </operation>
+    <operation name="addCaseNote">
+      <input message="xs0:addCaseNoteRequest"/>
+      <output message="xs0:addCaseNoteResponse"/>
+    </operation>
+    <operation name="claimCase">
+      <input message="xs0:claimCaseRequest"/>
+      <output message="xs0:claimCaseResponse"/>
+    </operation>
+  </portType>
+  <binding name="ProcessMakerServiceSoap" type="xs0:ProcessMakerServiceSoap">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="login">
+      <soap12:operation soapAction="http://www.processmaker.com/login" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="processList">
+      <soap12:operation soapAction="urn:processList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="roleList">
+      <soap12:operation soapAction="urn:roleList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="groupList">
+      <soap12:operation soapAction="urn:groupList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="departmentList">
+      <soap12:operation soapAction="urn:departmentList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="userList">
+      <soap12:operation soapAction="urn:userList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="caseList">
+      <soap12:operation soapAction="urn:caseList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="unassignedCaseList">
+      <soap12:operation soapAction="urn:unassignedCaseList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="createUser">
+      <soap12:operation soapAction="urn:createUser" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="updateUser">
+      <soap12:operation soapAction="urn:updateUser" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="informationUser">
+      <soap12:operation soapAction="urn:informationUser" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="createGroup">
+      <soap12:operation soapAction="urn:createGroup" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="createDepartment">
+      <soap12:operation soapAction="urn:createDepartment" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="assignUserToGroup">
+      <soap12:operation soapAction="urn:assignUserToGroup" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="assignUserToDepartment">
+      <soap12:operation soapAction="urn:assignUserToDepartment" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="newCase">
+      <soap12:operation soapAction="urn:newCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="reassignCase">
+      <soap12:operation soapAction="urn:reassignCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="newCaseImpersonate">
+      <soap12:operation soapAction="urn:newCaseImpersonate" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="routeCase">
+      <soap12:operation soapAction="urn:routeCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="executeTrigger">
+      <soap12:operation soapAction="urn:executeTrigger" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="sendVariables">
+      <soap12:operation soapAction="urn:sendVariables" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getVariables">
+      <soap12:operation soapAction="urn:getVariables" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getVariablesNames">
+      <soap12:operation soapAction="urn:getVariablesNames" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="sendMessage">
+      <soap12:operation soapAction="urn:sendMessage" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getCaseInfo">
+      <soap12:operation soapAction="urn:getCaseInfo" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="taskList">
+      <soap12:operation soapAction="urn:taskList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="taskCase">
+      <soap12:operation soapAction="urn:taskCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="systemInformation">
+      <soap12:operation soapAction="urn:systemInformation" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="triggerList">
+      <soap12:operation soapAction="urn:triggerList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="outputDocumentList">
+      <soap12:operation soapAction="urn:outputDocumentList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="inputDocumentList">
+      <soap12:operation soapAction="urn:inputDocumentList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="inputDocumentProcessList">
+      <soap12:operation soapAction="urn:inputDocumentProcessList" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="removeDocument">
+      <soap12:operation soapAction="urn:removeDocument" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getCaseNotes">
+      <soap12:operation soapAction="urn:getCaseNotes" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="removeUserFromGroup">
+      <soap12:operation soapAction="urn:removeUserFromGroup" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="deleteCase">
+      <soap12:operation soapAction="urn:deleteCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="cancelCase">
+      <soap12:operation soapAction="urn:cancelCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="pauseCase">
+      <soap12:operation soapAction="urn:pauseCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="unpauseCase">
+      <soap12:operation soapAction="urn:unpauseCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="addCaseNote">
+      <soap12:operation soapAction="urn:addCaseNote" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="claimCase">
+      <soap12:operation soapAction="urn:claimCase" soapActionRequired="true" style="document"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ProcessMakerService">
+    <documentation>ProcessMaker Web Service</documentation>
+    <port name="ProcessMakerServiceSoap" binding="xs0:ProcessMakerServiceSoap">
+      <soap12:address location="http://172.17.0.3:80/sysworkflow/en/classic/services/soap2"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint></con:endpoints><con:operation id="98add74b-218f-49d8-a454-37bd439f1d39" isOneWay="false" action="urn:addCaseNote" name="addCaseNote" bindingOperationName="addCaseNote" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="be0f9547-ce70-4580-9f10-c0b2e1a241f3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:addCaseNoteRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseUid>?</proc:caseUid>
+         <proc:processUid>?</proc:processUid>
+         <proc:taskUid>?</proc:taskUid>
+         <proc:userUid>?</proc:userUid>
+         <proc:note>?</proc:note>
+         <!--Zero or more repetitions:-->
+         <proc:sendMail>?</proc:sendMail>
+      </proc:addCaseNoteRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/addCaseNoteRequest"/></con:call></con:operation><con:operation id="9f5a1a30-cd27-41c0-9d65-c03df07141fb" isOneWay="false" action="urn:assignUserToDepartment" name="assignUserToDepartment" bindingOperationName="assignUserToDepartment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c14c6418-1624-4f2a-9498-1060f3933cf8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:assignUserToDepartmentRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:userId>?</proc:userId>
+         <proc:departmentId>?</proc:departmentId>
+         <!--Optional:-->
+         <proc:manager>?</proc:manager>
+      </proc:assignUserToDepartmentRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/assignUserToDepartmentRequest"/></con:call></con:operation><con:operation id="7f26b2f8-a748-45d9-a982-9c3406da16ff" isOneWay="false" action="urn:assignUserToGroup" name="assignUserToGroup" bindingOperationName="assignUserToGroup" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9a3f1c78-2288-4d2e-a88c-b3b7faeab484" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:assignUserToGroupRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:userId>?</proc:userId>
+         <proc:groupId>?</proc:groupId>
+      </proc:assignUserToGroupRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/assignUserToGroupRequest"/></con:call></con:operation><con:operation id="79e6e45f-f934-4849-9222-663052a0b617" isOneWay="false" action="urn:cancelCase" name="cancelCase" bindingOperationName="cancelCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2b77561d-d726-4823-8355-fb03b53be721" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:cancelCaseRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseUid>?</proc:caseUid>
+         <proc:delIndex>?</proc:delIndex>
+         <proc:userUid>?</proc:userUid>
+      </proc:cancelCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/cancelCaseRequest"/></con:call></con:operation><con:operation id="4d987b51-a817-4f46-b37a-b53772fc62ab" isOneWay="false" action="urn:caseList" name="caseList" bindingOperationName="caseList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="aac3e18d-ce31-4566-bd81-cb2a4d1a0aa4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:caseListRequest>
+         <proc:sessionId>?</proc:sessionId>
+      </proc:caseListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/caseListRequest"/></con:call></con:operation><con:operation id="9cfb5235-786b-4ef8-8904-7cf301216092" isOneWay="false" action="urn:claimCase" name="claimCase" bindingOperationName="claimCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6620ecf8-1bf5-47e1-b778-58e341203811" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:claimCaseRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:guid>?</proc:guid>
+         <proc:delIndex>?</proc:delIndex>
+      </proc:claimCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/claimCaseRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8ec76e37-6372-47e6-874f-25b7ca803237" isOneWay="false" action="urn:createDepartment" name="createDepartment" bindingOperationName="createDepartment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2ed7e694-63db-4df8-a82a-049d74d4a8d5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:createDepartmentRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:name>?</proc:name>
+         <proc:parentUID>?</proc:parentUID>
+      </proc:createDepartmentRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/createDepartmentRequest"/></con:call></con:operation><con:operation id="4f2fd28f-c082-4d7c-91cb-7946d52d75f1" isOneWay="false" action="urn:createGroup" name="createGroup" bindingOperationName="createGroup" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="099a1473-46fe-4613-9e1e-b12239cc294b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:createGroupRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:name>?</proc:name>
+      </proc:createGroupRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/createGroupRequest"/></con:call></con:operation><con:operation id="16601a6d-06f6-4d57-90bf-6962d401ff0f" isOneWay="false" action="urn:createUser" name="createUser" bindingOperationName="createUser" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b202e2c9-0eab-4886-902c-d9fae431d066" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:createUserRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:userId>?</proc:userId>
+         <proc:firstname>?</proc:firstname>
+         <proc:lastname>?</proc:lastname>
+         <proc:email>?</proc:email>
+         <proc:role>?</proc:role>
+         <proc:password>?</proc:password>
+         <!--Zero or more repetitions:-->
+         <proc:dueDate>?</proc:dueDate>
+         <!--Zero or more repetitions:-->
+         <proc:status>?</proc:status>
+      </proc:createUserRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/createUserRequest"/></con:call></con:operation><con:operation id="0f149296-c21b-46ea-b28b-7fde7ab8b47b" isOneWay="false" action="urn:deleteCase" name="deleteCase" bindingOperationName="deleteCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="317d94ea-b1ee-4139-a740-919cff3dd33a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:deleteCaseRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseUid>?</proc:caseUid>
+      </proc:deleteCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/deleteCaseRequest"/></con:call></con:operation><con:operation id="fb917295-0734-4f5f-ab2a-734d49c312ee" isOneWay="false" action="urn:departmentList" name="departmentList" bindingOperationName="departmentList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5206bc9b-4203-4842-aaaa-d6d308a1933e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:departmentListRequest>
+         <proc:sessionId>?</proc:sessionId>
+      </proc:departmentListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/departmentListRequest"/></con:call></con:operation><con:operation id="ea9d8aca-96a2-471b-b5d1-68af09f1e0ec" isOneWay="false" action="urn:executeTrigger" name="executeTrigger" bindingOperationName="executeTrigger" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6dba4690-40f3-420f-8943-492e79979fbc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:executeTriggerRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseId>?</proc:caseId>
+         <proc:triggerIndex>?</proc:triggerIndex>
+         <!--Optional:-->
+         <proc:delIndex>?</proc:delIndex>
+      </proc:executeTriggerRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/executeTriggerRequest"/></con:call></con:operation><con:operation id="31a534ff-e57d-41cd-9e93-e95cabb28fb7" isOneWay="false" action="urn:getCaseInfo" name="getCaseInfo" bindingOperationName="getCaseInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c91b9275-2515-4e72-9d43-e30294d1a3cc" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:getCaseInfoRequest>
+         <proc:sessionId>1443790505892dcde487c33055201533</proc:sessionId>
+         <proc:caseId>1</proc:caseId>
+         <!--Optional:-->
+         <proc:delIndex>?</proc:delIndex>
+      </proc:getCaseInfoRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/getCaseInfoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f4e53203-0742-451c-b556-7369a7e7500a" isOneWay="false" action="urn:getCaseNotes" name="getCaseNotes" bindingOperationName="getCaseNotes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="933b8871-fef4-4a76-a829-ed78bd9e0a93" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:getCaseNotesRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:applicationID>?</proc:applicationID>
+         <proc:userUid>?</proc:userUid>
+      </proc:getCaseNotesRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/getCaseNotesRequest"/></con:call></con:operation><con:operation id="76d58dde-fecf-4842-ad6c-fc04526fa8d8" isOneWay="false" action="urn:getVariables" name="getVariables" bindingOperationName="getVariables" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3af32f39-4e77-4ee3-a6a1-131786ac73f6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:getVariablesRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseId>?</proc:caseId>
+         <!--1 or more repetitions:-->
+         <proc:variables>
+            <proc:name>?</proc:name>
+         </proc:variables>
+      </proc:getVariablesRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/getVariablesRequest"/></con:call></con:operation><con:operation id="b14602c6-827a-487b-ab7d-0a332d454c16" isOneWay="false" action="urn:getVariablesNames" name="getVariablesNames" bindingOperationName="getVariablesNames" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4da337df-873b-4eeb-8406-e7b50f8cc0ec" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:getVariablesNamesRequest>
+         <proc:sessionId>1443790505892dcde487c33055201533</proc:sessionId>
+         <proc:caseId>1</proc:caseId>
+      </proc:getVariablesNamesRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/getVariablesNamesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="37bef615-03d1-42a8-9c2a-75b1daf5e3c5" isOneWay="false" action="urn:groupList" name="groupList" bindingOperationName="groupList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="822cb47a-a73a-4daa-a5c7-4eb115bf1c26" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:groupListRequest>
+         <proc:sessionId>?</proc:sessionId>
+      </proc:groupListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/groupListRequest"/></con:call></con:operation><con:operation id="2fe46940-0e16-44f5-bd77-ab0f1a64c826" isOneWay="false" action="urn:informationUser" name="informationUser" bindingOperationName="informationUser" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="813ed9fd-c3db-4768-909f-5529c2b53c74" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:informationUserRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:userUid>?</proc:userUid>
+      </proc:informationUserRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/informationUserRequest"/></con:call></con:operation><con:operation id="165c02ec-bac6-4d2b-9660-c9d0ab926047" isOneWay="false" action="urn:inputDocumentList" name="inputDocumentList" bindingOperationName="inputDocumentList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8d9cf823-e89c-4b31-9621-e6033db860be" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:inputDocumentListRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <!--Optional:-->
+         <proc:caseId>?</proc:caseId>
+      </proc:inputDocumentListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/inputDocumentListRequest"/></con:call></con:operation><con:operation id="3a8f1d7d-ed28-4b20-9581-9acfa0a0f217" isOneWay="false" action="urn:inputDocumentProcessList" name="inputDocumentProcessList" bindingOperationName="inputDocumentProcessList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a79f02ec-2679-4e70-b9a1-93d51d0dee58" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:inputDocumentProcessListRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <!--Optional:-->
+         <proc:processId>?</proc:processId>
+      </proc:inputDocumentProcessListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/inputDocumentProcessListRequest"/></con:call></con:operation><con:operation id="d2b9d0e0-97fa-4d70-87b1-565f0c4448ff" isOneWay="false" action="http://www.processmaker.com/login" name="login" bindingOperationName="login" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="16c66fc5-56b2-4605-b896-6b6857a1d9c3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:login>
+         <proc:userid>admin</proc:userid>
+         <proc:password>scorpio</proc:password>
+      </proc:login>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/loginRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="939bbfcf-4699-48a1-aa55-3e3210f4a408" isOneWay="false" action="urn:newCase" name="newCase" bindingOperationName="newCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e5412448-4f51-4b13-9685-d5ac687b0c6b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:newCaseRequest>
+         <proc:sessionId>260269382589d8e51969360084335369</proc:sessionId>
+         <proc:processId>450098214587b65f65eac42031125287</proc:processId>
+         <proc:taskId>482096035587b664ad4a5a9007394728</proc:taskId>
+         <!--1 or more repetitions:-->
+         <proc:variables>
+            <proc:name>Nom</proc:name>
+            <proc:value>Abdoulaye</proc:value>
+         </proc:variables>
+         <proc:variables>
+            <proc:name>Prenom</proc:name>
+            <proc:value>Diaw</proc:value>
+         </proc:variables>
+         <!--Zero or more repetitions:-->
+         <proc:executeTriggers>?</proc:executeTriggers>
+      </proc:newCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/newCaseRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b9b5684e-aa4b-47b5-9bf5-71097a762a23" isOneWay="false" action="urn:newCaseImpersonate" name="newCaseImpersonate" bindingOperationName="newCaseImpersonate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fc03cdec-4eb4-4235-971c-ed5b56b5ea60" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:newCaseImpersonateRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:processId>?</proc:processId>
+         <proc:userId>?</proc:userId>
+         <!--1 or more repetitions:-->
+         <proc:variables>
+            <proc:name>?</proc:name>
+            <proc:value>?</proc:value>
+         </proc:variables>
+         <proc:taskId>?</proc:taskId>
+      </proc:newCaseImpersonateRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/newCaseImpersonateRequest"/></con:call></con:operation><con:operation id="43e400fc-c01c-43de-96b1-b51891fdb868" isOneWay="false" action="urn:outputDocumentList" name="outputDocumentList" bindingOperationName="outputDocumentList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3ddac759-9eca-4276-a339-c40ebb2622be" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:outputDocumentListRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <!--Optional:-->
+         <proc:caseId>?</proc:caseId>
+      </proc:outputDocumentListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/outputDocumentListRequest"/></con:call></con:operation><con:operation id="1073b1ac-3604-4173-bfa4-f72ce7ab44af" isOneWay="false" action="urn:pauseCase" name="pauseCase" bindingOperationName="pauseCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8b7b2429-cbbb-493d-9a68-4f9aa916d540" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:pauseCaseRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseUid>?</proc:caseUid>
+         <proc:delIndex>?</proc:delIndex>
+         <proc:userUid>?</proc:userUid>
+         <!--Zero or more repetitions:-->
+         <proc:unpauseDate>?</proc:unpauseDate>
+      </proc:pauseCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/pauseCaseRequest"/></con:call></con:operation><con:operation id="15dfefd7-e0f1-4cb6-b671-4250577cc475" isOneWay="false" action="urn:processList" name="processList" bindingOperationName="processList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="85782be3-6393-41d6-8be7-e5322cf04578" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:processListRequest>
+         <proc:sessionId>345870337589d82a7ad9833073777181</proc:sessionId>
+      </proc:processListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/processListRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="bd63a1f2-7906-4b8f-90e0-1ce4291a7a85" isOneWay="false" action="urn:reassignCase" name="reassignCase" bindingOperationName="reassignCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="230aecf1-8891-4d5d-9b75-05c9351b1a9c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:reassignCaseRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseId>?</proc:caseId>
+         <proc:delIndex>?</proc:delIndex>
+         <proc:userIdSource>?</proc:userIdSource>
+         <proc:userIdTarget>?</proc:userIdTarget>
+      </proc:reassignCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/reassignCaseRequest"/></con:call></con:operation><con:operation id="2c58fec2-9a74-45c7-b766-709f1ba81218" isOneWay="false" action="urn:removeDocument" name="removeDocument" bindingOperationName="removeDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d22d6add-56d7-419c-94df-f5e7a613b732" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:removeDocumentRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:appDocUid>?</proc:appDocUid>
+      </proc:removeDocumentRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/removeDocumentRequest"/></con:call></con:operation><con:operation id="f6ab9f22-f6d4-4a59-b4a7-3b39d94c48e6" isOneWay="false" action="urn:removeUserFromGroup" name="removeUserFromGroup" bindingOperationName="removeUserFromGroup" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d9f927a0-f01c-4f44-a4cf-a6e2e7be7e55" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:removeUserFromGroupRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:userId>?</proc:userId>
+         <proc:groupId>?</proc:groupId>
+      </proc:removeUserFromGroupRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/removeUserFromGroupRequest"/></con:call></con:operation><con:operation id="3196961e-a06f-4c17-b374-a6a19fade8ab" isOneWay="false" action="urn:roleList" name="roleList" bindingOperationName="roleList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f3cbc9ae-81cc-4bde-aa31-ec0dffc5c6be" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:roleListRequest>
+         <proc:sessionId>?</proc:sessionId>
+      </proc:roleListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/roleListRequest"/></con:call></con:operation><con:operation id="a43436db-8931-4a69-a7c0-bbc046c6bb5a" isOneWay="false" action="urn:routeCase" name="routeCase" bindingOperationName="routeCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7f2f7d2a-b332-44ed-ae2e-01178699c2fb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:routeCaseRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseId>?</proc:caseId>
+         <proc:delIndex>?</proc:delIndex>
+      </proc:routeCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/routeCaseRequest"/></con:call></con:operation><con:operation id="49535142-23c5-44c1-975c-ca714256302c" isOneWay="false" action="urn:sendMessage" name="sendMessage" bindingOperationName="sendMessage" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6c346456-fbc4-499e-b65d-01979c325c9d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:sendMessageRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseId>?</proc:caseId>
+         <proc:from>?</proc:from>
+         <proc:to>?</proc:to>
+         <proc:cc>?</proc:cc>
+         <proc:bcc>?</proc:bcc>
+         <proc:subject>?</proc:subject>
+         <proc:template>?</proc:template>
+      </proc:sendMessageRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/sendMessageRequest"/></con:call></con:operation><con:operation id="c28d2a26-2ae8-41da-ac43-ebd7d73fcb1f" isOneWay="false" action="urn:sendVariables" name="sendVariables" bindingOperationName="sendVariables" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9dd53cda-8d7d-4043-b115-b95a02790c55" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:sendVariablesRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseId>?</proc:caseId>
+         <!--1 or more repetitions:-->
+         <proc:variables>
+            <proc:name>?</proc:name>
+            <proc:value>?</proc:value>
+         </proc:variables>
+      </proc:sendVariablesRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/sendVariablesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ef3c5539-6049-4a69-ab7d-b4f3317e28d1" isOneWay="false" action="urn:systemInformation" name="systemInformation" bindingOperationName="systemInformation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dc503e61-6aaa-4980-a18c-9b2a5d7085ce" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:systemInformationRequest>
+         <proc:sessionId>?</proc:sessionId>
+      </proc:systemInformationRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/systemInformationRequest"/></con:call></con:operation><con:operation id="63c03c41-f745-467b-88a3-43b7987b4689" isOneWay="false" action="urn:taskCase" name="taskCase" bindingOperationName="taskCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="132ae5fe-7aa6-4677-b84a-ac0efb947544" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:taskCaseRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseId>?</proc:caseId>
+      </proc:taskCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/taskCaseRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f5476433-61aa-4ac4-86c7-a2e2f0e89a6f" isOneWay="false" action="urn:taskList" name="taskList" bindingOperationName="taskList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="75d22ad1-4bcd-49d3-83a3-27f38c33488e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:taskListRequest>
+         <proc:sessionId>345870337589d82a7ad9833073777181</proc:sessionId>
+      </proc:taskListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/taskListRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5a75ba5d-47e7-4671-9017-5d0c4fb0a2bb" isOneWay="false" action="urn:triggerList" name="triggerList" bindingOperationName="triggerList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1f319c8f-db9b-42d2-8828-1ca3f9902f43" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:triggerListRequest>
+         <proc:sessionId>?</proc:sessionId>
+      </proc:triggerListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/triggerListRequest"/></con:call></con:operation><con:operation id="691df1ea-47b5-4afb-b5f0-2f534a36e561" isOneWay="false" action="urn:unassignedCaseList" name="unassignedCaseList" bindingOperationName="unassignedCaseList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="94c9713e-8aa6-4d9f-a22e-30f84d93b747" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:unassignedCaseListRequest>
+         <proc:sessionId>?</proc:sessionId>
+      </proc:unassignedCaseListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/unassignedCaseListRequest"/></con:call></con:operation><con:operation id="39d39745-5972-43a5-9168-76e9a2a4bacb" isOneWay="false" action="urn:unpauseCase" name="unpauseCase" bindingOperationName="unpauseCase" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="eaafe3a2-30e0-4e1d-bab9-8784017fb325" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:unpauseCaseRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:caseUid>?</proc:caseUid>
+         <proc:delIndex>?</proc:delIndex>
+         <proc:userUid>?</proc:userUid>
+      </proc:unpauseCaseRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/unpauseCaseRequest"/></con:call></con:operation><con:operation id="fc6f82e7-940f-46c8-9b82-3e529e9a678b" isOneWay="false" action="urn:updateUser" name="updateUser" bindingOperationName="updateUser" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3ada6784-ae00-484c-9593-fcf8513b5603" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:updateUserRequest>
+         <proc:sessionId>?</proc:sessionId>
+         <proc:userUid>?</proc:userUid>
+         <proc:userName>?</proc:userName>
+         <!--Zero or more repetitions:-->
+         <proc:firstName>?</proc:firstName>
+         <!--Zero or more repetitions:-->
+         <proc:lastName>?</proc:lastName>
+         <!--Zero or more repetitions:-->
+         <proc:email>?</proc:email>
+         <!--Zero or more repetitions:-->
+         <proc:dueDate>?</proc:dueDate>
+         <!--Zero or more repetitions:-->
+         <proc:status>?</proc:status>
+         <!--Zero or more repetitions:-->
+         <proc:role>?</proc:role>
+         <!--Zero or more repetitions:-->
+         <proc:password>?</proc:password>
+      </proc:updateUserRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/updateUserRequest"/></con:call></con:operation><con:operation id="566ad5a3-a447-4b41-8b50-d06d8b23c01f" isOneWay="false" action="urn:userList" name="userList" bindingOperationName="userList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="67e884d2-5d50-4d3c-bea7-47e4293ea3da" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://172.17.0.3:80/sysworkflow/en/classic/services/soap2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:proc="http://www.processmaker.com">
+   <soap:Header/>
+   <soap:Body>
+      <proc:userListRequest>
+         <proc:sessionId>?</proc:sessionId>
+      </proc:userListRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.processmaker.com/ProcessMakerServiceSoap/userListRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
